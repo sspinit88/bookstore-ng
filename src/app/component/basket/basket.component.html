@@ -1,0 +1,39 @@
+<div class="basket-container dropdown">
+  <div class="basket-preview"
+       data-toggle="dropdown">
+    Корзина
+    <span class="badge badge-success ml-1">
+      {{basketItems.length}}
+    </span>
+  </div>
+
+  <!--dropDown-->
+  <div class="dropdown-menu dropdown-menu-right mt-2"
+       aria-labelledby="dropdownMenuButton"
+       [hidden]="!basketItems.length">
+    <div class="dropdown-item"
+         *ngFor="let item of basketItems">
+            <span class="text-center">
+              {{item.name}}
+            </span>
+      <span class="ml-3 text-success">
+              {{item.price | currency:'USD':'symbol':'3.2-2'}}
+            </span>
+      <button class="btn btn-danger ml-1 text-light"
+              (click)="deleteBookFromBasket(item.id)">
+              X
+      </button>
+    </div>
+    <div class="dropdown-item">
+      <a class="btn btn-primary btn-block mt-2"
+          href="#">
+        Оформить заказ
+      </a>
+      <button class="btn btn-danger btn-block mt-2"
+              (click)="clearThisBasket()">
+        Очистить корзину
+      </button>
+    </div>
+  </div>
+
+</div>
