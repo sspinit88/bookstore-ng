@@ -19,6 +19,7 @@ export class CurrencyComponent implements OnInit {
 
   ngOnInit() {
     this.currencyServices.selectedCurrency
+    // selectedCurrency сообщает об изменениях
         .subscribe(data => {
           // текущий список
           this.currentCurrencyList = data.slice();

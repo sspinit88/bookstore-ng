@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container"
+     *ngIf="!adressIsVisible">
   <table class="table table-striped">
     <thead>
     <tr>
@@ -10,23 +11,87 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th scope="row">Learn JS</th>
-      <td>100</td>
+    <tr *ngFor="let item of checkoutList; trackBy: trackByFn;">
+      <th scope="row">{{item.name}}</th>
+      <td>{{item.price | currency:"USD":"symbol":"3.2-4"}}</td>
       <td>
         <input type="number"
-               name="">
+               class="text-center"
+               min="1"
+               max="100"
+               [(ngModel)]="item.count"
+               name="count"
+               #countItm
+               (input)="onChangeItemCount(item)">
       </td>
-      <td>1000</td>
+      <td>{{item.sum | currency:"USD":"symbol":"3.2-4"}}</td>
       <td>
-        <button class="btn btn-danger">
+        <button class="btn btn-danger"
+                (click)="deleteBookFromBasket(item.id)">
           X
         </button>
       </td>
     </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{totalSum | currency:"USD":"symbol":"3.2-4"}}</td>
+      <td></td>
+    </tr>
     </tbody>
   </table>
-  <button class="btn btn-primary">
+  <button class="btn btn-primary"
+          (click)="adressIsVisible = true">
     Checkout
   </button>
+</div>
+
+<div class="container mt-5"
+     *ngIf="adressIsVisible && checkoutList.length">
+    <div class="col-6 mx-auto">
+      <div class="card card-body">
+        <button class="btn btn-info mb-3"
+                (click)="adressIsVisible = false">
+          Вернуться
+        </button>
+        <form #form="ngForm"
+              (ngSubmit)="onSubmit(form)" >
+          <div class="form-group">
+            <label for="name">ФИО</label>
+            <input class="form-control"
+                   type="text"
+                   id="name"
+                   [(ngModel)]="name"
+                   name="email"
+                   required
+            >
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control"
+                   type="text"
+                   id="email"
+                   [(ngModel)]="email"
+                   name="email"
+                   required
+            >
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input class="form-control"
+                   type="text"
+                   id="phone"
+                   [(ngModel)]="phone"
+                   name="phone"
+                   required
+            >
+          </div>
+          <button class="btn btn-primary btn-block"
+                  [disabled]="form.invalid">
+            Заказать
+          </button>
+        </form>
+      </div>
+    </div>
 </div>

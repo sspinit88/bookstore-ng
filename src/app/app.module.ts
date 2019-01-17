@@ -25,8 +25,9 @@ import {CurrencyComponent} from './component/cyrrency/currency.component';
 import {CurrencyService} from './services/currency.service';
 import {BasketComponent} from './component/basket/basket.component';
 import {BasketService} from './services/basket.service';
-import { ClientHomeComponent } from './component/client-home/client-home.component';
-import { ClientCheckoutComponent } from './component/client-checkout/client-checkout.component';
+import {ClientHomeComponent} from './component/client-home/client-home.component';
+import {ClientCheckoutComponent} from './component/client-checkout/client-checkout.component';
+import {SalesService} from './services/sales.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ClientCheckoutComponent } from './component/client-checkout/client-chec
     IdService,
     AuthService,
     CurrencyService,
-    BasketService
+    BasketService,
+    SalesService
   ],
   bootstrap: [AppComponent]
 })

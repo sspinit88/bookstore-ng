@@ -1,16 +1,18 @@
 import {Injectable} from '@angular/core';
 import {BookModel} from '../models/book.model';
 import {Observable, of} from 'rxjs';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+import {AngularFirestore,
+        AngularFirestoreCollection,
+        AngularFirestoreDocument} from '@angular/fire/firestore';
 import {map} from 'rxjs/operators';
 
 @Injectable()
 export class BooksService {
 
-  booksCollection: AngularFirestoreCollection<Book>;
-  bookDoc: AngularFirestoreDocument<Book>;
-  books: Observable<Book[]>;
-  book: Observable<Book>;
+  booksCollection: AngularFirestoreCollection<BookModel>;
+  bookDoc: AngularFirestoreDocument<BookModel>;
+  books: Observable<BookModel[]>;
+  book: Observable<BookModel>;
 
   // public books: BookModel[] = [
   //   {

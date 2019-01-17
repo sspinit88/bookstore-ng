@@ -7,9 +7,11 @@ export class BookModel {
       public description: string,
       public links: LinkBook[],
       public date: string,
+      public sum?: number,
+      public count?: number,
       public isAddBasket?: boolean,
+      public price?: number,
       public id?: string,
-      public price?: any,
   ) {
   }
 }
