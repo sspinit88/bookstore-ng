@@ -10,6 +10,7 @@ import {LoginComponent} from './component/login/login.component';
 import {AuthGuard} from './guard/auth.guard';
 import {RegistrationComponent} from './component/registration/registration.component';
 import {ClientHomeComponent} from './component/client-home/client-home.component';
+import {ClientCheckoutComponent} from './component/client-checkout/client-checkout.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
     path: 'books/:id',
     component: EditBookComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'checkout',
+    component: ClientCheckoutComponent
   },
   {
     path: 'login',

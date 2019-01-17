@@ -26,6 +26,13 @@
       </li>
       <li class="nav-item">
         <a class="nav-link"
+           [routerLink]="'panel'"
+           [routerLinkActive]="'active'">
+          Panel
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
            [routerLink]="'about'"
            [routerLinkActive]="'active'">
           About
@@ -57,7 +64,8 @@
     Registration
   </a>
 
-  <div class="navbar-text ml-3">
+  <div class="navbar-text ml-3"
+       *ngIf="isPublick">
     <app-basket></app-basket>
   </div>
 

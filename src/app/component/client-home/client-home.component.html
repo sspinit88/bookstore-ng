@@ -2,7 +2,7 @@
   <!--Books-->
   <div class="row">
     <div class="col-4"
-         *ngFor="let book of books">
+         *ngFor="let book of books; trackBy: trackByFn">
       <div class="card card-body">
         <div class="card card-title">
           {{book.name}}

@@ -10,7 +10,9 @@ import {BasketService} from '../../services/basket.service';
 })
 export class ClientHomeComponent implements OnInit {
 
-  books: BookModel[];
+  // пустые массивы нужны, что бы при работе с foreach не выдавал undefined
+  books: BookModel[] = [];
+  basketItems = [];
 
   constructor(
       private bookServices: BooksService,
@@ -19,9 +21,30 @@ export class ClientHomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    // get basket item
+    // важно писать первым, иначе не будет работать
+    this.basketService.getBasketItem()
+        .subscribe(items => {
+          if (items.length) {
+            // получаем эл из корзины
+            this.basketItems = items;
+          }
+        });
     // получаем все книги
     this.bookServices.getBooks().subscribe(dataBooks => {
       this.books = dataBooks;
+      // console.log('все книги ', this.books, 'книги из корзины ', this.basketItems);
+
+      // проверяем наличие элементов в корзине
+      if (this.basketItems.length) { // пояснение lesson-17 ~1:00:00
+        this.basketItems.forEach(item => {
+          this.books.forEach(book => {
+            if (book.id === item.id) {
+              book.isAddBasket = true;
+            }
+          });
+        });
+      }
     });
     // subscribe on clear
     this.basketService.clearAllItemsEvent.subscribe(response => {
@@ -52,6 +75,11 @@ export class ClientHomeComponent implements OnInit {
         .subscribe((book) => {
           // console.log('add book in basket', book);
         });
+  }
+
+  deleteBookFromBasket(id) {
+    // console.log('deleteBookFromBasket(id)', id);
+    this.basketService.deleteItem(id);
   }
 
 }

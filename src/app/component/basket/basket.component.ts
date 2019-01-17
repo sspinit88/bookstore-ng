@@ -35,4 +35,4 @@ export class BasketComponent implements OnInit {
 
 }
 
-// todo lesson 17 32:00
+
