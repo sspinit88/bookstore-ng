@@ -28,7 +28,7 @@ export class CurrencyService {
     }
   ];
 
-  private currencySourse = new BehaviorSubject<CurrencyModel>(this.currency);
+  private currencySourse = new BehaviorSubject<any>(this.currency);
   selectedCurrency = this.currencySourse.asObservable();
 
   constructor() {

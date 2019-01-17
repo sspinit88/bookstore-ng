@@ -43,7 +43,7 @@ export class BooksService {
     this.books = this.booksCollection.snapshotChanges()
         .pipe(map(collection => {
           return collection.map(document => {
-            const data = document.payload.doc.data() as Book;
+            const data = document.payload.doc.data() as BookModel;
             data.id = document.payload.doc.id;
 
             return data;
@@ -69,7 +69,7 @@ export class BooksService {
     //   }
     //   return item;
     // })
-    // return of(book);
+    return of(book);
   }
 
   deleteBook(id: string) {

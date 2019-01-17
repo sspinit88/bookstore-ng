@@ -29,10 +29,10 @@ export class EditBookComponent implements OnInit {
     this.bookId = this.activatedRoute.snapshot.params['id'];
     // console.log('bookId', this.bookId);
 
-    this.booksServices.getBookById(this.bookId)
-        .subscribe((response: BookModel) => {
-          this.book = response;
-        });
+    // this.booksServices.getBookById(this.bookId)
+    //     .subscribe((response: BookModel) => {
+    //       this.book = response;
+    //     });
   }
 
   editBook() {

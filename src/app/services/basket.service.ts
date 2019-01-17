@@ -20,7 +20,7 @@ export class BasketService {
     return of(this.purchaseList);
   }
 
-  addItem(book: BookModel) {
+  addItem(book: any) {
     this.purchaseList.push(book);
     // console.log('add', this.purchaseList);
     return of(book);
