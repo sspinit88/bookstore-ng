@@ -11,6 +11,7 @@ import {AuthGuard} from './guard/auth.guard';
 import {RegistrationComponent} from './component/registration/registration.component';
 import {ClientHomeComponent} from './component/client-home/client-home.component';
 import {ClientCheckoutComponent} from './component/client-checkout/client-checkout.component';
+import {OrderComponent} from './component/order/order.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: ClientCheckoutComponent
+  },
+  {
+    path: 'order',
+    component: OrderComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',

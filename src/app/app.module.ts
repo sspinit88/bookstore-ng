@@ -28,6 +28,7 @@ import {BasketService} from './services/basket.service';
 import {ClientHomeComponent} from './component/client-home/client-home.component';
 import {ClientCheckoutComponent} from './component/client-checkout/client-checkout.component';
 import {SalesService} from './services/sales.service';
+import { OrderComponent } from './component/order/order.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {SalesService} from './services/sales.service';
     CurrencyComponent,
     BasketComponent,
     ClientHomeComponent,
-    ClientCheckoutComponent
+    ClientCheckoutComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

@@ -14,25 +14,6 @@ export class BooksService {
   books: Observable<BookModel[]>;
   book: Observable<BookModel>;
 
-  // public books: BookModel[] = [
-  //   {
-  //     id: '71e9-fde8-4384-842f-65a1',
-  //     name: 'Выразительный JS',
-  //     author: 'Marijn HaverBeke',
-  //     description: 'lorem lorem lorem',
-  //     link: [
-  //       {
-  //         type: 'epub',
-  //         link: 'link-for-epub'
-  //       },
-  //       {
-  //         type: 'pdf',
-  //         link: 'link-for-pdf'
-  //       },
-  //     ]
-  //   },
-  // ];
-
   constructor(
       private afs: AngularFirestore
   ) {

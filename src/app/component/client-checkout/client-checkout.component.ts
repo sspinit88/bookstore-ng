@@ -66,7 +66,9 @@ export class ClientCheckoutComponent implements OnInit {
       name: this.name,
       phone: this.phone,
       email: this.email,
-      stautus: "processing"
+      stautus: "processing",
+      total: this.totalSum,
+      items: this.checkoutList,
     }
 
     this.salesService.addNewOrder(order).subscribe(response => {

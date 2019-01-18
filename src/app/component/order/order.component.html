@@ -1,0 +1,95 @@
+<div class="container">
+  <div *ngFor="let order of orders; let i = index" class="mb-5">
+    <div class="card mb-5">
+      <div class="card-header">
+        Информация о заказе № {{ i + 1 }}
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <label for="name">ФИО:</label>
+          <input class="form-control"
+                 type="text"
+                 name="name"
+                 id="name"
+                 [(ngModel)]="order.name"
+                 [readonly]="isEdit"
+                 required>
+        </li>
+        <li class="list-group-item">
+          <label for="name">Email:</label>
+          <input class="form-control"
+                 type="text"
+                 name="email"
+                 id="email"
+                 [(ngModel)]="order.email"
+                 [readonly]="isEdit"
+                 required>
+        </li>
+        <li class="list-group-item">
+          <label for="name">Телефон:</label>
+          <input class="form-control"
+                 type="text"
+                 name="phone"
+                 id="phone"
+                 [(ngModel)]="order.phone"
+                 [readonly]="isEdit"
+                 required>
+        </li>
+      </ul>
+      <button class="btn mt-3 mb-3 ml-3 mr-3"
+              [ngClass]="btnEditClass()"
+              (click)="isEdit = !isEdit">
+        <span *ngIf="isEdit == true">
+          Редактировать личные данные клиента
+        </span>
+        <span *ngIf="isEdit == false">
+          Закончить редактирование личных данных клиента
+        </span>
+      </button>
+    </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Count</th>
+        <th>Sum</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of order.items; let idx = index">
+        <td>{{ idx + 1 }}</td>
+        <th scope="row">{{ item.name }}</th>
+        <td>{{ item.price }}</td>
+        <td>
+          <input class="text-center"
+                 type="number"
+                 name="count"
+                 [(ngModel)]="item.count"
+                 min="1"
+                 max="100"
+          >
+        </td>
+        <td>{{ item.sum }}</td>
+        <td>
+          <button class="btn btn-danger"
+          >
+            X
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <!--select не работает-->
+    <select [(ngModel)]="order.status"
+            name="status"
+             (change)="changeStatus(order)"
+            class="form-control">
+      <option value="processing">processing</option>
+      <option value="shipping">shipping</option>
+      <option value="close">close</option>
+    </select>
+  </div>
+</div>
