@@ -10,7 +10,7 @@ export class BasketService {
   private clearSource = new BehaviorSubject(false);
   clearAllItemsEvent = this.clearSource.asObservable();
 
-  private deleteSource = new BehaviorSubject("");
+  private deleteSource = new BehaviorSubject('');
   deleteItemEvent = this.deleteSource.asObservable();
 
   constructor() {
@@ -22,25 +22,26 @@ export class BasketService {
 
   addItem(book: any) {
     this.purchaseList.push(book);
-    // console.log('add', this.purchaseList);
+    console.log('addItem', this.purchaseList);
     return of(book);
   }
 
   deleteItem(id: string) {
     // вариант №1
 
-    for (let i = 0; i < this.purchaseList.length; i++) {
-      if (this.purchaseList[i].id === id) {
-        this.purchaseList.splice(i, 1);
-        // console.log('delete', this.purchaseList, ' length:', this.purchaseList.length);
-        break;
-      }
-    }
+    // for (let i = 0; i < this.purchaseList.length; i++) {
+    //     //   if (this.purchaseList[i].id === id) {
+    //     //     this.purchaseList.splice(i, 1);
+    //     //     // console.log('delete', this.purchaseList, ' length:', this.purchaseList.length);
+    //     //     break;
+    //     //   }
+    //     // }
 
     // вариант №2
 
-    // this.purchaseList = this.purchaseList.filter(list => list.id !== id);
-    // console.log('delete', this.purchaseList, ' length:', this.purchaseList.length);
+    const idx = this.purchaseList.findIndex(list => list.id !== id);
+    this.purchaseList.splice(idx, 1);
+    console.log('delete v.2');
 
     // уведомим все компоненты об удалении одной книги
     this.deleteSource.next(id);

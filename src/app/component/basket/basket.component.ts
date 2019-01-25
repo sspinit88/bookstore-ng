@@ -20,6 +20,7 @@ export class BasketComponent implements OnInit {
     this.basketService.getBasketItem()
         .subscribe(items => {
           this.basketItems = items;
+          console.log('this.basketItems', this.basketItems);
         });
 
   }
